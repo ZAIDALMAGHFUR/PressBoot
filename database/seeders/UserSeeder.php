@@ -23,5 +23,13 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'roles_id' => 1,
         ]);
+        User::create([
+            'first_name' => 'agent',
+            'last_name' => 'zaid',
+            'email' => 'agent@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now(),
+            'roles_id' => 2,
+        ]);
     }
 }
