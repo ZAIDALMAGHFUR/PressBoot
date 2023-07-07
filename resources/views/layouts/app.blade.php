@@ -240,57 +240,39 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="{{ route('kurikulum') }}">Data Wilayah</a></li>
-                    <li><a href="{{ route('thnakademik') }}">Tahun Akademik</a></li>
-                    <li><a href="{{ route('gedung') }}">Gedung</a></li>
-                    <li><a href="{{ route('ruangan') }}">Ruangan</a></li>
-                    <li><a href="{{ route('golongan') }}">Golongan</a></li>
-                    <li><a href="{{ route('ptk') }}">Jenis PTK</a></li>
-                    <li><a href="{{ route('jurusan') }}">Jurusan</a></li>
-                    <li><a href="{{ route('kelas') }}">Kelas</a></li>
-                    <li><a href="{{ route('kepegawaian') }}">Kepegawaian</a></li>
+                    <li><a href="http://">Data Wilayah</a></li>
+                    <li><a href="http://">Data Sampah Masuk</a></li>
+                    <li><a href="http://">Data Lokasi Agensi</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="users"></i><span>Data Pengguna</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="{{ route('siswa') }}">Siswa</a></li>
-                    <li><a href="{{ route('guru') }}">Guru</a></li>
-                    <li><a href="http://">Kepala
-                        Sekolah</a></li>
-                    <li><a href="http://">Admin</a></li>
+                    <li><a href="http://">Agensi</a></li>
+                    <li><a href="http://">Pengepul</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="book"></i><span>Data Sampah</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Kelompok Mapel</a></li>
-                    <li><a href="http://">Mata Pelajaran</a></li>
-                    <li><a href="http://">Jadwal Pelajaran</a></li>
-                    <li><a href="http://">Bahan & Tugas</a></li>
-                    <li><a href="http://">Kompetensi Dasar</a></li>
-                    <li><a href="http://">Penilaian Diri</a></li>
-                    <li><a href="http://">Rentang Nilai</a></li>
+                    <li><a href="http://">Jenis Sampah</a></li>
+                    <li><a href="http://">Data Harga Jenis Sampah</a></li>
+                    <li><a href="http://">Data Sampah Masuk</a></li>
+                    <li><a href="http://">Data Sampah Keluar</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="calendar"></i><span>Data Agensi</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Absensi Guru</a></li>
-                    <li><a href="http://">Absensi Siswa</a></li>
-                    <li><a href="http://">Rekap Absensi</a></li>
+                    <li><a href="http://">Data Pemasukan Agensi</a></li>
+                    <li><a href="http://">Data Pengeluaran Agensi</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="file-text"></i><span>Laporan Harga Pabrik</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Nilai UTS</a></li>
-                    <li><a href="http://">Nilai Raport</a></li>
-                    <li><a href="http://">Capaian Belajar</a></li>
-                    <li><a href="http://">Extrakulikuler</a></li>
-                    <li><a href="http://">Presentasi</a></li>
-                    <li><a href="http://">Raport UTS</a></li>
-                    <li><a href="http://">Cetak Raport</a></li>
+                    <li><a href="http://">Harga Jenis Sampah</a></li>
+                    <li><a href="http://">Data Penjualan Pabrik</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
