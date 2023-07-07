@@ -4,7 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\CitySeeder;
+use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\LocationSeeder;
+use Database\Seeders\PlasticTypeSeeder;
+use Database\Seeders\PlasticTypePriceSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +28,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            RoleSeeder::class,
             UserSeeder::class,
+            LocationSeeder::class,
+            PlasticTypeSeeder::class,
+            PlasticTypePriceSeeder::class,
+            CitySeeder::class,
         ]);
     }
 }
