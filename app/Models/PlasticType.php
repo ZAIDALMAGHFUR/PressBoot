@@ -10,6 +10,6 @@ class PlasticType extends Model
     use HasFactory;
 
     protected $guarded = [
-        'plastic_type',
+        'id',
     ];
 }
