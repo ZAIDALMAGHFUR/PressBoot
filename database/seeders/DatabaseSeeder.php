@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\CitySeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\IncomeSeeder;
 use Database\Seeders\LocationSeeder;
 use Database\Seeders\PlasticTypeSeeder;
 use Database\Seeders\PlasticTypePriceSeeder;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             PlasticTypeSeeder::class,
             PlasticTypePriceSeeder::class,
             CitySeeder::class,
+            IncomeSeeder::class,
         ]);
     }
 }
