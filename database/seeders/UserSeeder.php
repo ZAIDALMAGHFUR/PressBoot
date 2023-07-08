@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
+            'locations_id' => 1, // 'locations_id' => 1,
             'roles_id' => 1,
         ]);
         User::create([
@@ -29,7 +30,17 @@ class UserSeeder extends Seeder
             'email' => 'agent@gmail.com',
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
+            'locations_id' => 1, // 'locations_id' => 1,
             'roles_id' => 2,
+        ]);
+        User::create([
+            'first_name' => 'pengepul',
+            'last_name' => 'zaid',
+            'email' => 'pengepul@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now(),
+            'locations_id' => 1, // 'locations_id' => 1,
+            'roles_id' => 3,
         ]);
     }
 }

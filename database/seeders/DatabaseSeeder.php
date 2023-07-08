@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            LocationSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            LocationSeeder::class,
             PlasticTypeSeeder::class,
             PlasticTypePriceSeeder::class,
             CitySeeder::class,
