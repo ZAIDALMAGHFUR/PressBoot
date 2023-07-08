@@ -9,11 +9,11 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Gedung</h3>
+            <h3>Location</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
-              <li class="breadcrumb-item active">Gedung</li>
+              <li class="breadcrumb-item active">Data Location</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -46,8 +46,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
-              data-bs-target="#addGedung">Add Gedung</button>
+            <a href="{{ route('location.create') }}" class="btn btn-primary" type="button">Add Location</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -55,45 +54,19 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
-                    <th>Kode Gedung</th>
-                    <th>Nama Gedung</th>
-                    <th>Jumlah Lantai</th>
-                    <th>Panjang</th>
-                    <th>Tinggi</th>
-                    <th>Lebar</th>
-                    <th>Keterangan</th>
-                    <th>Status</th>
+                    <th>Name Location</th>
                     <th style="width: 77px;">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $a)
+                  @foreach ($location as $l)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $a['kd_gedung'] }}</td>
-                      <td>{{ $a['nm_gedung'] }}</td>
-                      <td>{{ $a['jml_lantai'] }}</td>
-                      <td>{{ $a['p_gedung'] }}</td>
-                      <td>{{ $a['t_gedung'] }}</td>
-                      <td>{{ $a['l_gedung'] }}</td>
-                      <td>{{ $a['ket_gedung'] }}</td>
-                      @if ($a['stts_gedung'] == 'Active')
-                        <td>
-                          <span class="span badge rounded badge-success">
-                            Active
-                          </span>
-                        </td>
-                      @else
-                        <td>
-                          <span class="span badge rounded badge-danger">
-                            Non Active
-                          </span>
-                        </td>
-                      @endif
+                      <td>{{ $l['name_location'] }}</td>
                       <td>
-                        <form method="POST" action="gedung/delete/{{ $a['id_gedung'] }}">
+                        <form method="POST" action="{{ route('location.delete', [$l]) }}">
                           @csrf
-                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id_gedung }}"><i
+                          <a href="{{ route('location.edit', [$l->id]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
                               class="fa fa-edit"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
@@ -110,8 +83,6 @@
     </div>
   </div>
   @pushOnce('js')
-    @include('dashboard.master.gedung.add')
-    @include('dashboard.master.gedung.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
@@ -158,130 +129,6 @@
           }
         );
       @endif
-
-      // Function CRUD with Ajax
-      $(document).ready(function() {
-        $('.add').on("click", function(e) {
-          e.preventDefault()
-          $.ajax({
-            url: "{{ route('gedung/add') }}",
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-              $('#addGedung').modal('show');
-            }
-          });
-        });
-
-        $('#save').on("click", function(e) {
-          const validation = new JustValidate('#saveGedung', {
-            errorFieldCssClass: 'is-invalid',
-          });
-          validation.addRequiredGroup(
-            '#stts_gedung',
-            'Silahkan pilih status terlebih dahulu!',
-          );
-          $.ajax({
-            type: "POST",
-            data: $('#saveGedung').serialize(),
-            url: "{{ route('gedung/save') }}",
-            dataType: "json",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-              toastr.success(
-                data.success,
-                'Wohoooo!', {
-                  showDuration: 300,
-                  hideDuration: 900,
-                  timeOut: 900,
-                  closeButton: true,
-                  newestOnTop: true,
-                  progressBar: true,
-                  onHidden: function() {
-                    window.location.reload();
-                  }
-                }
-              );
-            },
-            error: function(data) {
-              var errors = data.responseJSON.errors;
-              var errorsHtml = '';
-              $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
-              });
-              toastr.error(errorsHtml, 'Whoops!');
-            }
-          });
-        });
-
-        $('.edit').on("click", function(e) {
-          e.preventDefault()
-          var id = $(this).attr('data-bs-id');
-          $.ajax({
-            url: "/master/gedung/edit/" + id,
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-              $('#id_gedung').val(data.id_gedung);
-              $('#kd_gedung').val(data.kd_gedung);
-              $('#nm_gedung').val(data.nm_gedung);
-              $('#jml_lantai').val(data.jml_lantai);
-              $('#p_gedung').val(data.p_gedung);
-              $('#t_gedung').val(data.t_gedung);
-              $('#l_gedung').val(data.l_gedung);
-              $('#ket_gedung').val(data.ket_gedung);
-              $('input[id="stts_gedung"][value="' + data.stts_gedung + '"]').prop('checked', true);
-              $('#editGedung').modal('show');
-            }
-          });
-        });
-
-        $('#update').on("click", function(e) {
-          const validation = new JustValidate('#dataGedung', {
-            errorFieldCssClass: 'is-invalid',
-          });
-          validation.addRequiredGroup(
-            '#stts_gedung',
-            'Silahkan pilih status terlebih dahulu!',
-          );
-          var id_gedung = $("#id_gedung").val();
-          $.ajax({
-            type: "PUT",
-            data: $('#dataGedung').serialize(),
-            url: '/master/gedung/update/' + id_gedung,
-            dataType: "json",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-              toastr.success(
-                data.success,
-                'Wohoooo!', {
-                  showDuration: 300,
-                  hideDuration: 900,
-                  timeOut: 900,
-                  closeButton: true,
-                  newestOnTop: true,
-                  progressBar: true,
-                  onHidden: function() {
-                    window.location.reload();
-                  }
-                }
-              );
-            },
-            error: function(data) {
-              var errors = data.responseJSON.errors;
-              var errorsHtml = '';
-              $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
-              });
-              toastr.error(errorsHtml, 'Whoops!');
-            }
-          });
-        });
-      });
     </script>
   @endPushOnce
 @endsection

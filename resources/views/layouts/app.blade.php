@@ -14,7 +14,7 @@
   <meta name="author" content="pixelstrap">
   <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
-  <title>SIAKAD - Media Informatika</title>
+  <title>PRESSBOOT - Media Informatika</title>
   <!-- Google font-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link
@@ -240,7 +240,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Data Wilayah</a></li>
+                    <li><a href="{{ route('location') }}">Data Wilayah</a></li>
                     <li><a href="http://">Data Sampah Masuk</a></li>
                     <li><a href="http://">Data Lokasi Agensi</a></li>
                   </ul>
@@ -255,7 +255,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="book"></i><span>Data Sampah</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Jenis Sampah</a></li>
+                    <li><a href="http://">Jenis Sampah Plastik</a></li>
                     <li><a href="http://">Data Harga Jenis Sampah</a></li>
                     <li><a href="http://">Data Sampah Masuk</a></li>
                     <li><a href="http://">Data Sampah Keluar</a></li>
@@ -303,10 +303,10 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 footer-copyright">
-              <p class="mb-0">SIAKAD - Media Informatika.</p>
+              <p class="mb-0">PRESSBOOT - Media Informatika.</p>
             </div>
             <div class="col-md-6">
-              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> nurd0tid
+              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> Zaid
               </p>
             </div>
           </div>

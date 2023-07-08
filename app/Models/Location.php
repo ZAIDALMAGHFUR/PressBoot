@@ -10,6 +10,6 @@ class Location extends Model
     use HasFactory;
 
     protected $guarded = [
-        'name_location',
+        'id',
     ];
 }

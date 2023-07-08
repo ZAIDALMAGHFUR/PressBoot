@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZoomController;
+use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Agensi\DashboardController;
 
 
@@ -27,6 +28,14 @@ Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    //get location
+    Route::get('/location', [LocationController::class, 'index'])->name('location');
+    Route::get('/location/create', [LocationController::class, 'create'])->name('location.create');
+    Route::post('/location/store', [LocationController::class, 'store'])->name('location.store');
+    Route::get('/location/edit/{id}', [LocationController::class, 'edit'])->name('location.edit');
+    Route::post('/location/update/{id}', [LocationController::class, 'update'])->name('location.update');
+    Route::delete('/location/delete/{id}', [LocationController::class, 'destroy'])->name('location.delete');
 
 
     Route::get('/job-search',  [JobController::class, 'index'])->name('job-search');
