@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AgensiController;
+use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Agensi\DashboardController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
@@ -70,6 +71,10 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/agensi', [AgensiController::class, 'index'])->name('agensi');
     Route::delete('/agensi/delete/{id}', [AgensiController::class, 'destroy'])->name('agensi.delete');
     Route::put('/activate-agent/{user}', [AgensiController::class, 'activateUser'])->name('agensi.activateUser');
+
+
+    //get trash in
+    Route::get('/trash-in', [IncomeController::class, 'index'])->name('trash-in');
 
     Route::get('/job-search',  [JobController::class, 'index'])->name('job-search');
 
