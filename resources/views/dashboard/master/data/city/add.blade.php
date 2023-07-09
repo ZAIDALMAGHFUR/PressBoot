@@ -4,6 +4,7 @@
 @pushOnce('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
 @endPushOnce
 
 
@@ -73,8 +74,9 @@
 
                 <div class="col-md-6">
                     <label for="location_id" class="form-label">Location</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="location_id" id="location_id">
+                    <div class="col-sm-10 input-group">
+                        <select class=" form-control js-example-basic-single col-sm-12" name="location_id" id="location_id">
+                            <option value="">-- Select Location --</option>
                             @foreach($locations as $ps)
                                 <option {{ old("locations") == $ps->id ? 'selected' : null }} value="{{ $ps->id }}">{{ $ps->name_location }}</option>
                             @endforeach
@@ -93,4 +95,8 @@
     </div>
   </div>
 </div>
+@pushOnce('js')
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+@endpushOnce
 @endsection

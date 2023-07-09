@@ -34,6 +34,7 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
   </head>
@@ -57,7 +58,7 @@
                 <h4>Create your account</h4>
                 <h6>Enter your personal details to create account</h6>
                 <div class="form-group">
-                  <label>Frist Name</label>
+                  <label>First Name</label>
                   <div class="small-group">
                     <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
                       <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}"  autocomplete="first_name" autofocus>
@@ -80,62 +81,68 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Email Address</label>
-                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+                    <label>Email</label>
+                    <div class="small-group">
+                      <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                    </div>
+                    <div class="input-group">
+                        <select class=" form-control  js-example-basic-single col-sm-12 " name="locations_id" id="locations_id">\
+                            <option value="">Select Location</option>
+                            @foreach($locations as $location)
+                                <option value="{{ $location->id }}">{{ $location->name_location }}</option>
+                            @endforeach
+                        </select>
+                        @error('locations_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label>Location</label>
-                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                    <select class="form-control" name="locations_id" id="locations_id">
-                        @foreach($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->name_location }}</option>
-                        @endforeach
-                    </select>
-                    @error('locations_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+
+                  <div class="form-group">
+                    <label>City</label>
+                    <div class="small-group">
+                      <div class="input-group">
+                        <select class="form-control  js-example-basic-single col-sm-12" name="citys_id" id="citys_id">
+                            <option value="">Select City</option>
+                            @foreach($city as $city)
+                                <option value="{{ $city->id }}">{{ $city->city }}</option>
+                            @endforeach
+                        </select>
+                        @error('citys_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                    </div>
+                    <div class="input-group">
+                        <select class="form-control  js-example-basic-single col-sm-12" name="roles_id" id="roles_id">
+                            <option value="">Select Role</option>
+                            @foreach($role as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('roles_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label>Citys</label>
-                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                    <select class="form-control" name="citys_id" id="citys_id">
-                        @foreach($city as $city)
-                            <option value="{{ $city->id }}">{{ $city->city }}</option>
-                        @endforeach
-                    </select>
-                    @error('citys_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Role</label>
-                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                    <select class="form-control" name="roles_id" id="roles_id">
-                        @foreach($role as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('roles_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                  </div>
-                </div>
+
+
                 <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
@@ -203,6 +210,8 @@
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
     <!-- login js-->
     <!-- Plugin used-->
   </body>

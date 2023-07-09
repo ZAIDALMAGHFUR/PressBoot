@@ -10,7 +10,7 @@ class ZoomController extends Controller
 {
   public function index()
   {
-    $meeting = Zoom::user()->find('devapps@gmailwe.com')->meetings()->where('type', 'scheduled')->get()->toArray();
+    $meeting = Zoom::user()->find('almaghfurzaid@gmail.com')->meetings()->where('type', 'scheduled')->get()->toArray();
     // return $meeting;
     return view('dashboard.zoom.index', $meeting);
   }
@@ -30,7 +30,7 @@ class ZoomController extends Controller
     $duration = $request->input('duration');
     $start_time = $request->input('start_time');
 
-    $meetings = Zoom::user()->find('devapps@gmailwe.com')->meetings()->create([
+    $meetings = Zoom::user()->find('almaghfurzaid@gmail.com')->meetings()->create([
       'topic' => $topic,
       'duration' => $duration, // In minutes, optional
       'start_time' => new Carbon($start_time),
