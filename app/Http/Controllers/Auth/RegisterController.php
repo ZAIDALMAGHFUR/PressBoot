@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Models\Location;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Location;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -36,22 +34,8 @@ class RegisterController extends Controller
         if(auth()->user()->roles_id == 1){
             return RouteServiceProvider::HOME;
         }elseif(auth()->user()->roles_id == 2){
-            if (auth()->user()->active == 0) {
-                Auth::logout();
-                Session::flush();
-                Session::regenerate();
-                toastr()->error('Akun anda belum aktif, silahkan hubungi admin untuk mengaktifkan akun anda.');
-                return route('login');
-            }
             return RouteServiceProvider::AGENSI;
         }elseif(auth()->user()->roles_id == 3){
-            if (auth()->user()->active == 0) {
-                Auth::logout();
-                Session::flush();
-                Session::regenerate();
-                toastr()->error('Akun anda belum aktif, silahkan hubungi admin untuk mengaktifkan akun anda.');
-                return route('login');
-            }
             return RouteServiceProvider::PENGEPUL;
         }
     }

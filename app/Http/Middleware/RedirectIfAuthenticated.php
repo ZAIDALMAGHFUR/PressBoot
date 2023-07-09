@@ -19,11 +19,21 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
+        // $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         return redirect(RouteServiceProvider::HOME);
+        //     }
+        // }
+
+        if(Auth::check()){
+            if(Auth::user()->roles_id == 1){
                 return redirect(RouteServiceProvider::HOME);
+            }elseif(Auth::user()->roles_id == 2){
+                return redirect(RouteServiceProvider::AGENSI);
+            }elseif(Auth::user()->roles_id == 3){
+                return redirect(RouteServiceProvider::PENGEPUL);
             }
         }
 
