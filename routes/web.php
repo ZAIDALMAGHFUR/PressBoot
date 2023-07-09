@@ -6,6 +6,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\AgensiController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Agensi\DashboardController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
@@ -64,6 +65,11 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::post('/plastic-type-price/update/{id}', [PricesForTypesOfPlasticController::class, 'update'])->name('plastic-type-price.update');
     Route::delete('/plastic-type-price/delete/{id}', [PricesForTypesOfPlasticController::class, 'destroy'])->name('plastic-type-price.delete');
 
+
+    //get agensi
+    Route::get('/agensi', [AgensiController::class, 'index'])->name('agensi');
+    Route::delete('/agensi/delete/{id}', [AgensiController::class, 'destroy'])->name('agensi.delete');
+    Route::put('/activate-agent/{user}', [AgensiController::class, 'activateUser'])->name('agensi.activateUser');
 
     Route::get('/job-search',  [JobController::class, 'index'])->name('job-search');
 

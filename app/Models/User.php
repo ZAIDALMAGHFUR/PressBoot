@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\City;
+use App\Models\Role;
+use App\Models\Location;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -39,4 +42,22 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'roles_id', 'id');
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'locations_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'citys_id');
+    }
+
+
+
 }

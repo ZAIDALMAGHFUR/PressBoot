@@ -4,21 +4,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
   @endPushOnce
-  <style type="text/css">
-    #data tr {
-      text-align: center;
-    }
-  </style>
   <div class="page-body">
     <div class="container-fluid">
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Siswa</h3>
+            <h3>Agent</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-              <li class="breadcrumb-item">Data Pengguna</li>
-              <li class="breadcrumb-item active">Siswa</li>
+              <li class="breadcrumb-item">Data Master</li>
+              <li class="breadcrumb-item active">Data Agent</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -50,24 +45,50 @@
     <div class="container-fluid">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header">
-            {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
-              data-bs-target="#addGedung">Add Gedung</button> --}}
-          </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="display datatables table table-bordered" id="data">
-                <thead>
-                  <tr style="text-align: center">
-                    <th style="width: 55px">No</th>
-                    <th>NISN</th>
-                    <th>Nama Siswa</th>
-                    <th>Angkatan</th>
-                    <th>Jurusan</th>
-                    <th style="width: 120px;">Action</th>
-                  </tr>
-                </thead>
-              </table>
+                <table class="display table table-bordered" id="basic-1">
+                    <thead>
+                      <tr style="text-align: center">
+                        <th style="width: 55px">No</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>City</th>
+                        <th>Status</th>
+                        <th style="width: 77px;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($users as $item)
+                      <tr>
+                        <td>{{ $loop->iteration}}</td>
+                        <td>{{ $item->first_name }} {{ $item->last_name }}</td>
+                        <td>{{ $item->location->name_location }}</td>
+                        <td>{{ $item->city->city }}</td>
+                        <td>
+                          @if ($item->active == 1)
+                          <span class="badge badge-success">Active</span>
+                          @else
+                          <span class="badge badge-danger">Non Active</span>
+                          @endif
+                        </td>
+                        <td>
+                          <form method="POST" action="{{ route('agensi.activateUser', $item->id) }}">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></button>
+                          </form>
+                          <form method="POST" action="{{ route('agensi.delete', $item) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></button>
+                          </form>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+
             </div>
           </div>
         </div>
@@ -75,11 +96,13 @@
     </div>
   </div>
   @pushOnce('js')
+    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
     <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript">
+      // Sweetalert Delete Confirmation
       $('.show_confirm').click(function(e) {
         var form = $(this).closest("form");
         e.preventDefault();
@@ -104,59 +127,21 @@
             }
           })
       });
-    </script>
-    <script>
+
+      // Alert Toastr for delete
       @if (session()->has('success'))
-        toastr.success('{{ session('success') }}', 'Wohoooo!');
-      @else
-        toastr.error('{{ session('error') }}', 'Whoops!');
+        toastr.success(
+          '{{ session('success') }}',
+          'Wohoooo!', {
+            showDuration: 300,
+            hideDuration: 900,
+            timeOut: 900,
+            closeButton: true,
+            newestOnTop: true,
+            progressBar: true,
+          }
+        );
       @endif
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#data').DataTable({
-          aLengthMenu: [
-            [5, 10, 25, 50, 100, -1],
-            [5, 10, 25, 50, 100, "All"]
-          ],
-          processing: true,
-          serverSide: true,
-          responsive: true,
-          ajax: "{{ route('siswa') }}",
-          columns: [{
-              "data": null,
-              "sortable": false,
-              render: function(data, type, row, meta) {
-                return meta.row + meta.settings._iDisplayStart + 1;
-              }
-            },
-            {
-              data: 'nisn',
-              name: 'nisn'
-            },
-            {
-              data: 'nm_siswa',
-              name: 'nm_siswa'
-            },
-            {
-              data: 'angkatan',
-              name: 'angkatan'
-            },
-            {
-              data: 'nm_jurusan',
-              name: 'nm_jurusan'
-            },
-            {
-              render: function(data, type, row) {
-                var html = '<a href="" class="btn btn-info btn-xs m-r-5"><i class="fa fa-eye"></i></a>'
-                html += '<a href="" class="btn btn-primary btn-xs m-r-5"><i class="fa fa-edit"></i></a>'
-                html += '<a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>'
-                return html
-              }
-            }
-          ]
-        });
-      });
     </script>
   @endPushOnce
 @endsection
