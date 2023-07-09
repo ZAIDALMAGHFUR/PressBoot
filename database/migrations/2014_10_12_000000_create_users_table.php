@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreign('locations_id')->references('id')->on('locations');
             $table->unsignedBigInteger('citys_id');
             $table->foreign('citys_id')->references('id')->on('citys');
+            $table->enum('active', ['0', '1'])->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
