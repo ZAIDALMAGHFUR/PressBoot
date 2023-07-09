@@ -12,11 +12,11 @@
     <div class="page-header">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Create Plastic Type</h3>
+          <h3>Edit Plastic Type Price</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
             <li class="breadcrumb-item">Data Sampah</li>
-            <li class="breadcrumb-item active">Create Plastic Type</li>
+            <li class="breadcrumb-item active">Edit Plastic Type Price</li>
           </ol>
         </div>
         <div class="col-sm-6">
@@ -52,10 +52,12 @@
           <div class="table-responsive">
             <div class="col-lg-12">
               <div class="card p-3">
-                <form method="post" class="needs-validation" novalidate="" action="{{ route('plastic-type.store') }}">
+                <form method="POST" class="needs-validation" novalidate="" action="{{ route('plastic-type-price.update', [$plasticTypePrice]) }}" enctype="multipart/form-data">
                   @csrf
+                  @method('POST')
                   @if ($errors->any())
-                  <div class="alert alert-danger">
+                  <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                       <ul>
                           @foreach ($errors->all() as $error)
                               <li>{{ $error }}</li>
@@ -65,14 +67,36 @@
                   @endif
                   <div class="row g-2">
                     <div class="col-md-6">
-                      <label for="plastic_type" class="form-label">Name Plastic Type</label>
+                      <label for="plastic_type_id" class="form-label">Plastic Type</label>
                       <div class="col-sm-10">
-                          <input type="text" class="form-control" name="plastic_type" value="{{ old('plastic_type') }}" id="plastic_type" required>
+                        <select class="form-control" name="plastic_type_id" id="plastic_type_id">
+                            @foreach($plasticTypes as $ps)
+                                <option {{ old("plasticTypes") == $ps->id ? 'selected' : null }} value="{{ $ps->id }}">{{ $ps->plastic_type }}</option>
+                            @endforeach
+                        </select>
                       </div>
                   </div>
+                <div class="col-md-6">
+                    <label for="location_id" class="form-label">Location</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="location_id" id="location_id">
+                            @foreach($locations as $ps)
+                                <option {{ old("locations") == $ps->id ? 'selected' : null }} value="{{ $ps->id }}">{{ $ps->name_location }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-md-6">
+                      <label for="price" class="form-label">Plastic Price</label>
+                      <div class="col-sm-10">
+                          <input type="number" class="form-control" name="price" value="{{ old('price', $plasticTypePrice->price ) }}" id="price" required>
+                      </div>
                   </div>
 
-                  <button type="submit" class="btn btn-primary mt-3">Save</button>
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-4">Save</button>
               </form>
               </div>
           </div>

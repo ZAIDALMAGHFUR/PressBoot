@@ -18,7 +18,22 @@ class PlasticTypePriceSeeder extends Seeder
         PlasticTypePrice::create([
             'plastic_type_id' => 1,
             'location_id' => 1,
-            'price' => 1000,
+            'price' => 100000,
+        ]);
+        PlasticTypePrice::create([
+            'plastic_type_id' => 2,
+            'location_id' => 2,
+            'price' => 200000,
+        ]);
+        PlasticTypePrice::create([
+            'plastic_type_id' => 3,
+            'location_id' => 3,
+            'price' => 300000,
+        ]);
+        PlasticTypePrice::create([
+            'plastic_type_id' => 4,
+            'location_id' => 4,
+            'price' => 400000,
         ]);
     }
 }

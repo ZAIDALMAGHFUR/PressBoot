@@ -8,6 +8,7 @@ use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Agensi\DashboardController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
+use App\Http\Controllers\Admin\PricesForTypesOfPlasticController;
 
 
 /*
@@ -45,6 +46,14 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/plastic-type/edit/{id}', [TypesOfPlasticController::class, 'edit'])->name('plastic-type.edit');
     Route::post('/plastic-type/update/{id}', [TypesOfPlasticController::class, 'update'])->name('plastic-type.update');
     Route::delete('/plastic-type/delete/{id}', [TypesOfPlasticController::class, 'destroy'])->name('plastic-type.delete');
+
+    //get plastic type price
+    Route::get('/plastic-type-price', [PricesForTypesOfPlasticController::class, 'index'])->name('plastic-type-price');
+    Route::get('/plastic-type-price/create', [PricesForTypesOfPlasticController::class, 'create'])->name('plastic-type-price.create');
+    Route::post('/plastic-type-price/store', [PricesForTypesOfPlasticController::class, 'store'])->name('plastic-type-price.store');
+    Route::get('/plastic-type-price/edit/{id}', [PricesForTypesOfPlasticController::class, 'edit'])->name('plastic-type-price.edit');
+    Route::post('/plastic-type-price/update/{id}', [PricesForTypesOfPlasticController::class, 'update'])->name('plastic-type-price.update');
+    Route::delete('/plastic-type-price/delete/{id}', [PricesForTypesOfPlasticController::class, 'destroy'])->name('plastic-type-price.delete');
 
 
     Route::get('/job-search',  [JobController::class, 'index'])->name('job-search');

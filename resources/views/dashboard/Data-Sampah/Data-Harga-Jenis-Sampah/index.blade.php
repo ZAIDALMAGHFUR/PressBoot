@@ -9,11 +9,11 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Plastic Type</h3>
+            <h3>Plastic Type Price</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Sampah</li>
-              <li class="breadcrumb-item active">Plastic Type</li>
+              <li class="breadcrumb-item active">Plastic Type Price</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -46,7 +46,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <a href="{{ route('plastic-type.create') }}" class="btn btn-primary" type="button">Add Plastic Type</a>
+            <a href="{{ route('plastic-type-price.create') }}" class="btn btn-primary" type="button">Add Plastic Type Price</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -55,18 +55,22 @@
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
                     <th>Name Plastic Type</th>
+                    <th>Location</th>
+                    <th>price</th>
                     <th style="width: 77px;">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($PlasticType as $l)
+                  @foreach ($plasticTypePrices as $l)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $l['plastic_type'] }}</td>
+                      <td>{{ $l->plasticType->plastic_type }}</td>
+                      <td>{{ $l->Location->name_location }}</td>
+                      <td>Rp.{{ $l['price'] }}</td>
                       <td>
-                        <form method="POST" action="{{ route('plastic-type.delete', [$l]) }}">
+                        <form method="POST" action="{{ route('plastic-type-price.delete', [$l]) }}">
                           @csrf
-                          <a href="{{ route('plastic-type.edit', [$l->id]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
+                          <a href="{{ route('plastic-type-price.edit', [$l->id]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
                               class="fa fa-edit"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>

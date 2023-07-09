@@ -256,7 +256,7 @@
                       data-feather="book"></i><span>Data Sampah</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('plastic-type') }}">Jenis Sampah Plastik</a></li>
-                    <li><a href="http://">Data Harga Jenis Sampah</a></li>
+                    <li><a href="{{ route('plastic-type-price') }}">Data Harga Jenis Sampah Plastik</a></li>
                     <li><a href="http://">Data Sampah Masuk</a></li>
                     <li><a href="http://">Data Sampah Keluar</a></li>
                   </ul>

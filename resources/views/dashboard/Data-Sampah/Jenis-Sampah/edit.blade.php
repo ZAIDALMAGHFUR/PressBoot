@@ -12,11 +12,11 @@
     <div class="page-header">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Edit Mata Kuliah</h3>
+          <h3>Edit Plastic Type</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-            <li class="breadcrumb-item">Data Pengguna</li>
-            <li class="breadcrumb-item active">Edit Mata Kuliah</li>
+            <li class="breadcrumb-item">Data Sampah</li>
+            <li class="breadcrumb-item active">Edit Plastic Type</li>
           </ol>
         </div>
         <div class="col-sm-6">
