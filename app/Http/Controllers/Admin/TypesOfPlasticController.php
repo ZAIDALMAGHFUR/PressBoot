@@ -11,12 +11,12 @@ class TypesOfPlasticController extends Controller
     public function index()
     {
         $PlasticType = PlasticType::all();
-        return view('dashboard.Data-Sampah.Jenis-Sampah.index', compact('PlasticType'));
+        return view('dashboard.master.data.trash-types.index', compact('PlasticType'));
     }
 
     public function create()
     {
-        return view('dashboard.Data-Sampah.Jenis-Sampah.add');
+        return view('dashboard.master.data.trash-types.add');
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class TypesOfPlasticController extends Controller
     public function edit($id)
     {
         $PlasticType = PlasticType::find($id);
-        return view('dashboard.Data-Sampah.Jenis-Sampah.edit', compact('PlasticType'));
+        return view('dashboard.master.data.trash-types.edit', compact('PlasticType'));
     }
 
     public function update(Request $request, $id)

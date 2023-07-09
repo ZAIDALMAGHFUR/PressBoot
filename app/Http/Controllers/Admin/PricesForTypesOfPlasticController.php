@@ -18,14 +18,14 @@ class PricesForTypesOfPlasticController extends Controller
             $plasticTypePrice->price = number_format($plasticTypePrice->price, 0, ',', '.');
         }
 
-        return view('dashboard.Data-Sampah.Data-Harga-Jenis-Sampah.index', compact('plasticTypePrices'));
+        return view('dashboard.master.data.trash-types-price.index', compact('plasticTypePrices'));
     }
 
     public function create()
     {
         $locations = Location::all();
         $plasticTypes = PlasticType::all();
-        return view('dashboard.Data-Sampah.Data-Harga-Jenis-Sampah.add', compact('locations', 'plasticTypes'));
+        return view('dashboard.master.data.trash-types-price.add', compact('locations', 'plasticTypes'));
     }
 
     public function store(Request $request)
@@ -53,7 +53,7 @@ class PricesForTypesOfPlasticController extends Controller
         $plasticTypePrice = PlasticTypePrice::find($id);
         $locations = Location::all();
         $plasticTypes = PlasticType::all();
-        return view('dashboard.Data-Sampah.Data-Harga-Jenis-Sampah.edit', compact('plasticTypePrice', 'locations', 'plasticTypes'));
+        return view('dashboard.master.data.trash-types-price.edit', compact('plasticTypePrice', 'locations', 'plasticTypes'));
     }
 
     public function update(Request $request, $id)

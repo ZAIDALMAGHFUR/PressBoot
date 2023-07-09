@@ -11,12 +11,12 @@ class LocationController extends Controller
     public function index()
     {
         $location = Location::all();
-        return view('dashboard.master.Data-Wilayah.index', compact('location'));
+        return view('dashboard.master.data.location.index', compact('location'));
     }
 
     public function create()
     {
-        return view('dashboard.master.Data-Wilayah.add');
+        return view('dashboard.master.data.location.add');
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class LocationController extends Controller
     public function edit($id)
     {
         $location = Location::find($id);
-        return view('dashboard.master.Data-Wilayah.edit', compact('location'));
+        return view('dashboard.master.data.location.edit', compact('location'));
     }
 
     public function update(Request $request, $id)
