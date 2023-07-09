@@ -30,11 +30,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             LocationSeeder::class,
+            CitySeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
             PlasticTypeSeeder::class,
             PlasticTypePriceSeeder::class,
-            CitySeeder::class,
             IncomeSeeder::class,
         ]);
     }

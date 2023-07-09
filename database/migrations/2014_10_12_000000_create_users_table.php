@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->unsignedBigInteger('locations_id');
             $table->foreign('locations_id')->references('id')->on('locations');
+            $table->unsignedBigInteger('citys_id');
+            $table->foreign('citys_id')->references('id')->on('citys');
             $table->rememberToken();
             $table->timestamps();
         });
