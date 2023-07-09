@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Location;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -29,7 +32,29 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo(){
+        if(auth()->user()->roles_id == 1){
+            return RouteServiceProvider::HOME;
+        }elseif(auth()->user()->roles_id == 2){
+            if (auth()->user()->active == 0) {
+                Auth::logout();
+                Session::flush();
+                Session::regenerate();
+                toastr()->error('Akun anda belum aktif, silahkan hubungi admin untuk mengaktifkan akun anda.');
+                return route('login');
+            }
+            return RouteServiceProvider::AGENSI;
+        }elseif(auth()->user()->roles_id == 3){
+            if (auth()->user()->active == 0) {
+                Auth::logout();
+                Session::flush();
+                Session::regenerate();
+                toastr()->error('Akun anda belum aktif, silahkan hubungi admin untuk mengaktifkan akun anda.');
+                return route('login');
+            }
+            return RouteServiceProvider::PENGEPUL;
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -52,6 +77,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'roles_id' => ['required'],
+            'locations_id' => ['required'],
+            'citys_id' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -69,7 +97,9 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'roles_id' => 3,
+            'roles_id' => $data['roles_id'],
+            'locations_id' => $data['locations_id'],
+            'citys_id' => $data['citys_id'],
             'password' => Hash::make($data['password']),
         ]);
     }

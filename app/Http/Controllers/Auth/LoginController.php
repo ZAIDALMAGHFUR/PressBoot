@@ -32,7 +32,7 @@ class LoginController extends Controller
         if(auth()->user()->roles_id == 1){
             return RouteServiceProvider::HOME;
         }elseif(auth()->user()->roles_id == 2){
-            if (auth()->user()->status == 0) {
+            if (auth()->user()->active == 0) {
                 Auth::logout();
                 Session::flush();
                 Session::regenerate();
@@ -41,7 +41,7 @@ class LoginController extends Controller
             }
             return RouteServiceProvider::AGENSI;
         }elseif(auth()->user()->roles_id == 3){
-            if (auth()->user()->status == 0) {
+            if (auth()->user()->active == 0) {
                 Auth::logout();
                 Session::flush();
                 Session::regenerate();

@@ -40,24 +40,24 @@
   <body>
     <!-- Loader starts-->
     <div class="loader-wrapper">
-      <div class="theme-loader">    
+      <div class="theme-loader">
         <div class="loader-p"></div>
       </div>
     </div>
     <!-- Loader ends-->
     <!-- page-wrapper Start-->
-    <section>         
-      <div class="container-fluid p-0"> 
+    <section>
+      <div class="container-fluid p-0">
         <div class="row m-0">
           <div class="col-xl-7 order-1"><img class="bg-img-cover bg-center" src="../assets/images/login/1.jpg" alt="looginpage"></div>
-          <div class="col-xl-5 p-0"> 
+          <div class="col-xl-5 p-0">
             <div class="login-card">
               <form class="theme-form login-form needs-validation" method="POST" action="{{ route('register') }}">
                 @csrf
                 <h4>Create your account</h4>
                 <h6>Enter your personal details to create account</h6>
                 <div class="form-group">
-                  <label>Your Name</label>
+                  <label>Frist Name</label>
                   <div class="small-group">
                     <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
                       <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}"  autocomplete="first_name" autofocus>
@@ -92,6 +92,51 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label>Location</label>
+                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                    <select class="form-control" name="locations_id" id="locations_id">
+                        @foreach($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name_location }}</option>
+                        @endforeach
+                    </select>
+                    @error('locations_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Citys</label>
+                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                    <select class="form-control" name="citys_id" id="citys_id">
+                        @foreach($city as $city)
+                            <option value="{{ $city->id }}">{{ $city->city }}</option>
+                        @endforeach
+                    </select>
+                    @error('citys_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Role</label>
+                  <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                    <select class="form-control" name="roles_id" id="roles_id">
+                        @foreach($role as $role)
+                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('roles_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                </div>
+                <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
@@ -112,7 +157,7 @@
                 <div class="form-group">
                   <button class="btn btn-primary btn-block" type="submit">Create Account</button>
                 </div>
-                <div class="login-social-title">                
+                <div class="login-social-title">
                   <h5>Or</h5>
                 </div>
                 <p>Already have an account?<a class="ms-2" href="{{  route('login') }}">Sign in</a></p>
