@@ -241,7 +241,7 @@
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('location') }}">Data Wilayah</a></li>
-                    <li><a href="">Data City</a></li>
+                    <li><a href="{{ route('city') }}">Data City</a></li>
                     <li><a href="http://">Data Sampah Masuk</a></li>
                     <li><a href="http://">Data Lokasi Agensi</a></li>
                   </ul>

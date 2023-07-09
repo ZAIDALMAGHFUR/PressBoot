@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZoomController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Agensi\DashboardController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
@@ -38,6 +39,14 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/location/edit/{id}', [LocationController::class, 'edit'])->name('location.edit');
     Route::post('/location/update/{id}', [LocationController::class, 'update'])->name('location.update');
     Route::delete('/location/delete/{id}', [LocationController::class, 'destroy'])->name('location.delete');
+
+    //get city
+    Route::get('/city', [CityController::class, 'index'])->name('city');
+    Route::get('/city/create', [CityController::class, 'create'])->name('city.create');
+    Route::post('/city/store', [CityController::class, 'store'])->name('city.store');
+    Route::get('/city/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
+    Route::post('/city/update/{id}', [CityController::class, 'update'])->name('city.update');
+    Route::delete('/city/delete/{id}', [CityController::class, 'destroy'])->name('city.delete');
 
     //get plastic type
     Route::get('/plastic-type', [TypesOfPlasticController::class, 'index'])->name('plastic-type');
