@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.agensi')
 @section('content')
   @pushOnce('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
@@ -9,11 +9,11 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Agent</h3>
+            <h3>Trash In</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-              <li class="breadcrumb-item">Data Master</li>
-              <li class="breadcrumb-item active">Data Agent</li>
+              <li class="breadcrumb-item">Data Sampah</li>
+              <li class="breadcrumb-item active">Trash In</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -45,52 +45,47 @@
     <div class="container-fluid">
       <div class="col-sm-12">
         <div class="card">
+            <div class="card-header">
+                <a href="{{ route('agent.trash-in.create') }}" class="btn btn-primary" type="button">Add Trash In</a>
+              </div>
           <div class="card-body">
             <div class="table-responsive">
-                <table class="display table table-bordered" id="basic-1">
-                    <thead>
-                      <tr style="text-align: center">
-                        <th style="width: 55px">No</th>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>City</th>
-                        <th>Status</th>
-                        <th style="width: 77px;">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($users as $item)
-                      <tr>
-                        <td>{{ $loop->iteration}}</td>
-                        <td>{{ $item->first_name }} {{ $item->last_name }}</td>
-                        <td>{{ $item->location->name_location }}</td>
-                        <td>{{ $item->city->city }}</td>
-                        <td>
-                          @if ($item->active == 1)
-                          <span class="badge badge-success">Active</span>
-                          @else
-                          <span class="badge badge-danger">Non Active</span>
-                          @endif
-                        </td>
-                        <td>
-                            @if ($item->active == 0)
-                                <form method="POST" action="{{ route('agensi.activateUser', $item->id) }}">
+              <table class="display table table-bordered" id="basic-1">
+                <thead>
+                  <tr style="text-align: center">
+                    <th style="width: 55px">No</th>
+                    <th>Name</th>
+                    <th>Plastic Type</th>
+                    <th>Status</th>
+                    <th>Wight</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($incomes as $item)
+                        <tr style="text-align: center">
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->user->first_name }} {{ $item->user->last_name }}</td>
+                        <td>{{ $item->plastictype->plastic_type}}</td>
+                        <td>{{ $item->status}}</td>
+                        <td>{{ $item->weight}} KG</td>
+                        <td>{{ $item->created_at}}</td>
+                        <td>Rp. {{ $item->price}}</td>
+                            <td>
+                                <form method="POST" action="{{ route('agent.trash-in.delete', $item) }}">
                                     @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></button>
-                                  </form>
-                            @endif
-                          <form method="POST" action="{{ route('agensi.delete', $item) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></button>
-                          </form>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-
+                                    <a href="{{ route('agent.trash-in.edit', [$item->id]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
+                                        class="fa fa-edit"></i></a>
+                                    <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
+                                    <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
+                                </form>
+                            </td>
+                        </tr>
+                  @endforeach
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

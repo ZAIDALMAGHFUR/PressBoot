@@ -67,7 +67,7 @@
                       <td>{{ $item->user->first_name }} {{ $item->user->last_name }}</td>
                       <td>{{ $item->plastictype->plastic_type}}</td>
                       <td>{{ $item->status}}</td>
-                      <td>{{ $item->weight}}</td>
+                      <td>{{ $item->weight}} KG</td>
                       <td>{{ $item->created_at}}</td>
                       <td>Rp. {{ $item->price}}</td>
                     </tr>

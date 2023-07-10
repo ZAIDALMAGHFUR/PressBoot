@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\PlasticTypePrice;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PlasticType extends Model
 {
@@ -12,4 +13,9 @@ class PlasticType extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function plasticTypePrice()
+    {
+        return $this->belongsTo(PlasticTypePrice::class, 'plastic_types_id', 'id');
+    }
 }

@@ -19,126 +19,126 @@ class IncomeSeeder extends Seeder
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
         Income::create([
             'users_id' => 2,
             'plastic_types_id' => 1,
             'status' => 'income',
-            'weight' => '20 kg',
+            'weight' => '20 ',
             'price' => '2000000000',
         ]);
     }

@@ -16,10 +16,11 @@ class AgensiController extends Controller
 
     public function index()
     {
-        //mengambil data user dan tidak mau mengambil dat admin
-        $users = User::where('roles_id', '!=', '1')->get();
+        // Mengambil data pengguna yang memiliki roles_id bukan 1 dan 3
+        $users = User::whereNotIn('roles_id', [1, 3])->get();
         return view('dashboard.pengguna.agensi.index', compact('users'));
     }
+
 
 
     public function activateUser(Request $request, User $user)

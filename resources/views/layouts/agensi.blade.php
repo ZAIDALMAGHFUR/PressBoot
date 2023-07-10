@@ -241,14 +241,11 @@
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="http://">Data Wilayah</a></li>
-                    <li><a href="http://">Data Sampah Masuk</a></li>
-                    <li><a href="http://">Data Lokasi Agensi</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="users"></i><span>Data Pengguna</span></a>
+                      data-feather="users"></i><span>Data Pengepul saya</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Agensi</a></li>
                     <li><a href="http://">Pengepul</a></li>
                   </ul>
                 </li>
@@ -257,23 +254,21 @@
                   <ul class="nav-submenu menu-content">
                     <li><a href="http://">Jenis Sampah</a></li>
                     <li><a href="http://">Data Harga Jenis Sampah</a></li>
-                    <li><a href="http://">Data Sampah Masuk</a></li>
-                    <li><a href="http://">Data Sampah Keluar</a></li>
+                    <li><a href="{{ route('agent.trash-in') }}">Data Sampah Masuk</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="calendar"></i><span>Data Agensi</span></a>
+                      data-feather="calendar"></i><span>Data Pengepul</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Data Pemasukan Agensi</a></li>
-                    <li><a href="http://">Data Pengeluaran Agensi</a></li>
+                    <li><a href="http://">Data Pemasukan Pengepul</a></li>
                   </ul>
                 </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="file-text"></i><span>Laporan Harga Pabrik</span></a>
+                {{-- <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+                      data-feather="file-text"></i><span> Harga Pabrik</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="http://">Harga Jenis Sampah</a></li>
                     <li><a href="http://">Data Penjualan Pabrik</a></li>
-                  </ul>
+                  </ul> --}}
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
                       data-feather="book-open"></i><span>Rekap Pemasukan</span></a>

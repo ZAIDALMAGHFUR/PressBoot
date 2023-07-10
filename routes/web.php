@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AgensiController;
 use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Agensi\TrashInController;
 use App\Http\Controllers\Agensi\DashboardController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
 use App\Http\Controllers\Admin\PricesForTypesOfPlasticController;
@@ -86,5 +87,13 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
 
 Route::group(['middleware' => ['auth', 'OnlyAgent']], function () {
     Route::get('/agent', [DashboardController::class, 'index'])->name('agent');
+
+    //get trash in
+    Route::get('/agent/trash-in', [TrashInController::class, 'index'])->name('agent.trash-in');
+    Route::get('/agent/trash-in/create', [TrashInController::class, 'create'])->name('agent.trash-in.create');
+    Route::post('/agent/trash-in/store', [TrashInController::class, 'store'])->name('agent.trash-in.store');
+    Route::get('/agent/trash-in/edit/{id}', [TrashInController::class, 'edit'])->name('agent.trash-in.edit');
+    Route::post('/agent/trash-in/update/{id}', [TrashInController::class, 'update'])->name('agent.trash-in.update');
+    Route::delete('/agent/trash-in/delete/{id}', [TrashInController::class, 'destroy'])->name('agent.trash-in.delete');
 });
 
