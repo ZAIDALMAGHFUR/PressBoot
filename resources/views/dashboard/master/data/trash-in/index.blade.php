@@ -56,6 +56,7 @@
                     <th>Plastic Type</th>
                     <th>Status</th>
                     <th>Wight</th>
+                    <th>Date</th>
                     <th>Price</th>
                   </tr>
                 </thead>
@@ -67,6 +68,7 @@
                       <td>{{ $item->plastictype->plastic_type}}</td>
                       <td>{{ $item->status}}</td>
                       <td>{{ $item->weight}}</td>
+                      <td>{{ $item->created_at}}</td>
                       <td>Rp. {{ $item->price}}</td>
                     </tr>
                   @endforeach

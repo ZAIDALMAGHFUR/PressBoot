@@ -242,8 +242,7 @@
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('location') }}">Data Wilayah</a></li>
                     <li><a href="{{ route('city') }}">Data City</a></li>
-                    <li><a href="http://">Data Sampah Masuk</a></li>
-                    <li><a href="http://">Data Lokasi Agensi</a></li>
+                    {{-- <li><a href="http://">Data Sampah Masuk</a></li> --}}
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
@@ -259,7 +258,6 @@
                     <li><a href="{{ route('plastic-type') }}">Jenis Sampah Plastik</a></li>
                     <li><a href="{{ route('plastic-type-price') }}">Data Harga Jenis Sampah Plastik</a></li>
                     <li><a href="{{ route('trash-in') }}">Data Sampah Masuk</a></li>
-                    <li><a href="http://">Data Sampah Keluar</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
@@ -272,7 +270,6 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="file-text"></i><span>Laporan Harga Pabrik</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Harga Jenis Sampah</a></li>
                     <li><a href="http://">Data Penjualan Pabrik</a></li>
                   </ul>
                 </li>
