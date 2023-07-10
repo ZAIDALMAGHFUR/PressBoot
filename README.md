@@ -9,17 +9,17 @@
 
 ## SIAKAD - Lara
 
-Website SISTEM Informasi Akademik berbasis **LARAVEL 9** sebelumnya saya sudah buat juga yang versi nodejs + react, cuma belum lengkap, silahkan kalian lihat juga jika ingin belajar, fitur sama saja nantinya yang hanya berbeda dalam penggunaan teknologi bahasa yang saya gunakan, yang dibuat sedemikian rupa, untuk saya belajar, dan ini semua open source, bisa kalian kembangkan kembali, fitur sementara yang sudah saya kerjakan, yaitu:
+Website SISTEM Informasi  berbasis **LARAVEL 9** sebelumnya saya sudah buat juga yang versi nodejs + react, cuma belum lengkap, silahkan kalian lihat juga jika ingin belajar, fitur sama saja nantinya yang hanya berbeda dalam penggunaan teknologi bahasa yang saya gunakan, yang dibuat sedemikian rupa, untuk saya belajar, dan ini semua open source, bisa kalian kembangkan kembali, fitur sementara yang sudah saya kerjakan, yaitu:
 
 - Job Search ( Scraping website Glints ).
 - Zoom Meeting.
 - Authentication ( Register, Login, Verify Email, Forgot Password )
 
-SIAKAD masih dalam **tahap pengembangan**, karena ini basicnya untuk saya mempelajari hal baru, update terbaru, baik itu php framework dan js framework.
+PRESSBOOT masih dalam **tahap pengembangan**, karena ini basicnya untuk saya mempelajari hal baru, update terbaru, baik itu php framework dan js framework.
 
 ## Instalasi
 
-Untuk dapat kalian gunakan SIAKAD - LARA ini silahkan kalian ketikan perintah dibawah ini.
+Untuk dapat kalian gunakan PRESSBOOT  ini silahkan kalian ketikan perintah dibawah ini.
 ```sh
 $ composer install
 ```
@@ -29,7 +29,7 @@ $ composer update
 
 ## Setting Enviroment
 
-Berikut kalian setting terlebih dahulu, seperti yang saya sudah jelaskan diatas, bahwa fitur di SIAKAD ini ada Zoom Meeting dan Authentication menggunakan verify email dimana dibutuhkan sebuah **SMTP** untuk dapat mengirim sebuah email, beserta membuat zoom meeting maka ikuti langkah nya.
+Berikut kalian setting terlebih dahulu, seperti yang saya sudah jelaskan diatas, bahwa fitur di PRESSBOOT ini ada Zoom Meeting dan Authentication menggunakan verify email dimana dibutuhkan sebuah **SMTP** untuk dapat mengirim sebuah email, beserta membuat zoom meeting maka ikuti langkah nya.
 
 - Untuk SMTP belajar kalian silahkan gunakan [mailtrap](https://mailtrap.io/) agar mempunyai API KEY 
 - Untuk mendapatkan akses API KEY Zoom, silahkan kalian registrasi / login zoom, lalu kebagian menu **Advance** - **App Marketplace** - **Build JWT** kemudian akan muncul API KEY beserta SECRET KEY dan untuk Library saya menggunakan [MacsiDigital](https://github.com/MacsiDigital/laravel-zoom) silahkan baca karena dokumentasinya yang cukup lengkap.
