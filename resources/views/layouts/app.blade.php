@@ -249,7 +249,7 @@
                       data-feather="users"></i><span>Data Pengguna</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('agensi') }}">Agensi</a></li>
-                    <li><a href="http://">Pengepul</a></li>
+                    <li><a href="{{ route('pengepul') }}">Pengepul</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

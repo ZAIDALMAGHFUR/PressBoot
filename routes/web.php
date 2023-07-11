@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AgensiController;
 use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\PengepulController;
 use App\Http\Controllers\Agensi\TrashInController;
 use App\Http\Controllers\Agensi\DashboardController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
@@ -72,6 +73,11 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/agensi', [AgensiController::class, 'index'])->name('agensi');
     Route::delete('/agensi/delete/{id}', [AgensiController::class, 'destroy'])->name('agensi.delete');
     Route::put('/activate-agent/{user}', [AgensiController::class, 'activateUser'])->name('agensi.activateUser');
+
+    //get pengepul
+    Route::get('/pengepul', [PengepulController::class, 'index'])->name('pengepul');
+    Route::delete('/pengepul/delete/{id}', [PengepulController::class, 'destroy'])->name('pengepul.delete');
+    Route::put('/activate-pengepul/{user}', [PengepulController::class, 'activateUser'])->name('pengepul.activateUser');
 
 
     //get trash in
