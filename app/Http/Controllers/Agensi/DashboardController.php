@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers\Agensi;
 
-use App\Http\Controllers\Controller;
+use App\Models\City;
+use App\Models\Income;
+use App\Models\Location;
+use App\Models\PlasticType;
+use MacsiDigital\Zoom\User;
 use Illuminate\Http\Request;
+use App\Models\PlasticTypePrice;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+
 
 class DashboardController extends Controller
 {
@@ -15,6 +23,44 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('agensi.dashboard.dashboard');
+        $stats = Cache::remember('card-stats-' . auth()->id(), 10 * 1, fn () => $this->_getStats());
+
+        return view('agensi.dashboard.dashboard',  [
+            'stats' => $stats
+        ]);
+    }
+
+    private function _getStats()
+    {
+        $totalIncome = Income::where('price', '>', 0)->whereMonth('created_at', date('m'))->sum('price');
+        $formattedIncome = number_format($totalIncome, 0, ',', '.');
+
+        return [
+            [
+                "label" => "Total Location",
+                "value" => Location::count(),
+                'icon' => 'info'
+            ],
+            [
+                "label" => "Total City",
+                "value" => City::count(),
+                'icon' => 'clipboard'
+            ],
+            [
+                "label" => "Total Plastic Type",
+                "value" => PlasticType::count(),
+                'icon' => 'grid'
+            ],
+            [
+                "label" => "Total Plastic Type Price",
+                "value" => PlasticTypePrice::count(),
+                'icon' => 'layout'
+            ],
+            [
+                "label" => "Total Income this month",
+                "value" => 'Rp ' . $formattedIncome,
+                'icon' => 'tag'
+            ],
+        ];
     }
 }

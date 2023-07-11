@@ -53,7 +53,7 @@
   </div>
   <!-- Container-fluid Ends-->
 
-  {{-- <div class="container-fluid general-widget">
+  <div class="container-fluid general-widget">
     <div class="row">
       @foreach ($stats as $stat)
       <div class="col-sm-6 col-xl-4 col-lg-6">
@@ -71,7 +71,7 @@
       </div>
       @endforeach
     </div>
-  </div> --}}
+  </div>
 </div>
 
 <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
