@@ -27,6 +27,17 @@ class TrashInController extends Controller
         return view('agensi.data.AgentTrashIn.add', compact('PlasticTypePrice', 'plasticTypes'));
     }
 
+    public function getPrice(Request $request)
+    {
+        $plasticTypePrice = PlasticTypePrice::find($request->plastic_types_id);
+        if ($plasticTypePrice) {
+            $totalPrice = $plasticTypePrice->price * $request->weight;
+            return response()->json($totalPrice);
+        }
+        return response()->json(0);
+    }
+
+
     public function store(Request $request)
     {
         $user = Auth()->user();

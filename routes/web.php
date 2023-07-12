@@ -101,5 +101,10 @@ Route::group(['middleware' => ['auth', 'OnlyAgent']], function () {
     Route::get('/agent/trash-in/edit/{id}', [TrashInController::class, 'edit'])->name('agent.trash-in.edit');
     Route::post('/agent/trash-in/update/{id}', [TrashInController::class, 'update'])->name('agent.trash-in.update');
     Route::delete('/agent/trash-in/delete/{id}', [TrashInController::class, 'destroy'])->name('agent.trash-in.delete');
+
+    //get price
 });
 
+
+
+Route::get('/agent/getPrice', [TrashInController::class, 'getPrice'])->name('agent.getPrice');

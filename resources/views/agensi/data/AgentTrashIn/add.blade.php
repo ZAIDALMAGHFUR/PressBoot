@@ -97,7 +97,7 @@
                         <div class="col-md-6">
                             <label for="price" class="form-label">Price</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="price" value="{{ old('price') }}" id="price" required readonly>
+                                <input type="number" class="form-control" name="price" value="{{ old('price') }}" id="price" required readonly disabled>
                             </div>
                         </div>
                     </div>
@@ -115,5 +115,18 @@
 @pushOnce('js')
     <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+    <script>
+        document.getElementById('weight').addEventListener('input', function() {
+            var weight = this.value;
+            var plasticTypeId = document.getElementById('plastic_types_id').value;
+            if (weight && plasticTypeId) {
+                fetch('/agent/getPrice?plastic_types_id=' + plasticTypeId + '&weight=' + weight)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('price').value = data;
+                    });
+            }
+        });
+    </script>
 @endpushOnce
 @endsection
