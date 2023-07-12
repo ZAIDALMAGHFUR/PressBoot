@@ -103,8 +103,8 @@ Route::group(['middleware' => ['auth', 'OnlyAgent']], function () {
     Route::delete('/agent/trash-in/delete/{id}', [TrashInController::class, 'destroy'])->name('agent.trash-in.delete');
 
     //get price
+    Route::get('/agent/getPrice', [TrashInController::class, 'getPrice'])->name('agent.getPrice');
 });
 
 
 
-Route::get('/agent/getPrice', [TrashInController::class, 'getPrice'])->name('agent.getPrice');

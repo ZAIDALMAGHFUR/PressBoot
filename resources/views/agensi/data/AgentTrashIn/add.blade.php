@@ -125,6 +125,8 @@
                     .then(data => {
                         document.getElementById('price').value = data;
                     });
+            } else {
+                document.getElementById('price').value = 0;
             }
         });
     </script>
