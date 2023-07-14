@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Agensi;
 
 use App\Models\City;
+use App\Models\User;
 use App\Models\Income;
 use App\Models\Location;
 use App\Models\PlasticType;
-use MacsiDigital\Zoom\User;
 use Illuminate\Http\Request;
 use App\Models\PlasticTypePrice;
 use App\Http\Controllers\Controller;
@@ -25,8 +25,14 @@ class DashboardController extends Controller
     {
         $stats = Cache::remember('card-stats-' . auth()->id(), 10 * 1, fn () => $this->_getStats());
 
+        $notifications = User::where('active', '0')->get();
+
+        $count = $notifications->count();
+
         return view('agensi.dashboard.dashboard',  [
-            'stats' => $stats
+            'stats' => $stats,
+            'notifications' => $notifications,
+            'count' => $count
         ]);
     }
 
