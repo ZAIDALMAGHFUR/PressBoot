@@ -40,8 +40,17 @@ class HomeController extends Controller
 
     private function _getStats()
     {
-        $totalIncome = Income::where('price', '>', 0)->whereMonth('created_at', date('m'))->sum('price');
+        $totalIncome = Income::where('price', '>', 0)
+        ->where('status', 'income')
+        ->where('acc_status', 'approved')
+        ->whereMonth('created_at', date('m'))->sum('price');
         $formattedIncome = number_format($totalIncome, 0, ',', '.');
+
+        $totalexpEnditure = Income::where('price', '>', 0)
+        ->where('status', 'expenditure')
+        ->where('acc_status', 'approved')
+        ->whereMonth('created_at', date('m'))->sum('price');
+        $formattedEnditure = number_format($totalexpEnditure, 0, ',', '.');
 
         return [
             [
@@ -77,6 +86,11 @@ class HomeController extends Controller
             [
                 "label" => "Total Income this month",
                 "value" => 'Rp ' . $formattedIncome,
+                'icon' => 'tag'
+            ],
+            [
+                "label" => "Total expenditure this month",
+                "value" => 'Rp ' . $formattedEnditure,
                 'icon' => 'tag'
             ],
         ];

@@ -20,8 +20,9 @@ return new class extends Migration
             $table->unsignedBigInteger('plastic_types_id');
             $table->foreign('plastic_types_id')->references('id')->on('plastic_types');
             $table->enum('status', ['income', 'expenditure']);
-            $table->string('weight');
+            $table->unsignedBigInteger('weight');
             $table->string('price');
+            $table->enum('acc_status', ['waiting', 'approved', 'rejected'])->default('waiting');
             $table->timestamps();
         });
     }

@@ -59,10 +59,24 @@ class TrashInController extends Controller
             'status' => $request->status,
             'weight' => $request->weight,
             'price' => $totalPrice,
+            'acc_status' => 'waiting',
         ]);
 
         return redirect()->route('agent.trash-in')->with([
             'success' => 'Data berhasil ditambahkan',
+            'alert-type' => 'success'
+        ]);
+    }
+
+
+    public function accStatus(Income $income)
+    {
+        $income->update([
+            'acc_status' => 'approved',
+        ]);
+
+        return redirect()->back()->with([
+            'success' => 'Data berhasil diubah',
             'alert-type' => 'success'
         ]);
     }
@@ -77,6 +91,12 @@ class TrashInController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $PlasticTypePrice = PlasticTypePrice::find($request->plastic_types_id);
+        // dd($PlasticTypePrice->price * $request->weight);
+
+        $totalPrice = $PlasticTypePrice->price * $request->weight;
+
         $income = Income::findOrFail($id);
 
         $request->validate([
@@ -89,7 +109,8 @@ class TrashInController extends Controller
             'plastic_types_id' => $request->plastic_types_id,
             'status' => $request->status,
             'weight' => $request->weight,
-            'price' => $request->price,
+            'price' => $totalPrice,
+            'acc_status' => $request->acc_status,
         ]);
 
         return redirect()->route('agent.trash-in')->with([

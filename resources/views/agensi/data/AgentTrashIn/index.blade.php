@@ -60,6 +60,7 @@
                     <th>Wight</th>
                     <th>Date</th>
                     <th>Price</th>
+                    <th>Acc Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -73,7 +74,23 @@
                         <td>{{ $item->weight}} KG</td>
                         <td>{{ $item->created_at}}</td>
                         <td>Rp. {{ $item->price}}</td>
+                        <td>
+                            @if ($item->acc_status == 'waiting')
+                                <span class="badge badge-warning">Pending</span>
+                            @elseif ($item->acc_status == 'approved')
+                                <span class="badge badge-success">Approved</span>
+                            @elseif ($item->acc_status == 'rejected')
+                                <span class="badge badge-danger">Rejected</span>
+                            @endif
+                        </td>
                             <td>
+                                @if ($item->acc_status == 'waiting')
+                                    <form method="POST" action="{{ route('agent.trash-in.confirm', $item->id) }}">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></button>
+                                    </form>
+                                @endif
                                 <form method="POST" action="{{ route('agent.trash-in.delete', $item) }}">
                                     @csrf
                                     <a href="{{ route('agent.trash-in.edit', [$item->id]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i

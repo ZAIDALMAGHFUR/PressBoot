@@ -69,7 +69,7 @@
                       <label for="plastic_types_id" class="form-label">Plastic Type</label>
                       <div class="col-sm-10">
                         <select class="form-control js-example-basic-single col-sm-12" name="plastic_types_id" id="plastic_types_id">
-                            <option value="">-- Select Plastic Type --</option>
+                            <option value="{{ old('plastic_types_id', $income->plastic_types_id) }}">-- Select Plastic Type --</option>
                             @foreach($plasticTypes as $ps)
                                 <option {{ old("plasticTypes") == $ps->id ? 'selected' : null }} value="{{ $ps->id }}">{{ $ps->plastic_type }}</option>
                             @endforeach
@@ -80,9 +80,9 @@
                     <label for="status" class="form-label">Status</label>
                     <div class="col-sm-10">
                         <select class="form-control js-example-basic-single col-sm-12" name="status" id="status">
-                            <option value="">-- Select Status --</option>
-                            <option {{ old("status") == '1' ? 'selected' : null }} value="income">Income</option>
-                            <option {{ old("status") == '0' ? 'selected' : null }} value="expenditure">Expenditure</option>
+                            <option value="{{ old('status', $income->status) }}">-- Select Status --</option>
+                            <option {{ old("status") == 'income' ? 'selected' : null }} value="income">Income</option>
+                            <option {{ old("status") == 'expenditure' ? 'selected' : null }} value="expenditure">Expenditure</option>
                         </select>
                     </div>
                 </div>
@@ -97,9 +97,21 @@
                     <div class="col-md-6">
                       <label for="price" class="form-label">Price</label>
                       <div class="col-sm-10">
-                          <input type="number" class="form-control" name="price" value="{{ old('price', $income->price) }}" id="price" required disabled>
+                          <input type="number" class="form-control" name="price" value="{{ old('price', $income->price) }}" id="price" required disabled readonly>
                       </div>
                   </div>
+
+                  <div class="col-md-6">
+                    <label for="acc_status" class="form-label">Acc Status</label>
+                    <div class="col-sm-10">
+                        <select class="form-control js-example-basic-single col-sm-12" name="acc_status" id="acc_status">
+                            <option value="{{ old('acc_status', $income->acc_status) }}">-- Select Acc Status --</option>
+                            <option {{ old("acc_status") == 'waiting' ? 'selected' : null }} value="waiting">Pending</option>
+                            <option {{ old("acc_status") == 'approved' ? 'selected' : null }} value="approved">Approved</option>
+                            <option {{ old("acc_status") == 'rejected' ? 'selected' : null }} value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
 
                   </div>
 
@@ -116,5 +128,20 @@
 @pushOnce('js')
     <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+    <script>
+        document.getElementById('weight').addEventListener('input', function() {
+            var weight = this.value;
+            var plasticTypeId = document.getElementById('plastic_types_id').value;
+            if (weight && plasticTypeId) {
+                fetch('/agent/getPrice?plastic_types_id=' + plasticTypeId + '&weight=' + weight)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('price').value = data;
+                    });
+            } else {
+                document.getElementById('price').value = 0;
+            }
+        });
+    </script>
 @endpushOnce
 @endsection
