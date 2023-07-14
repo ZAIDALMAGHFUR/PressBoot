@@ -33,8 +33,14 @@ class HomeController extends Controller
     {
         $stats = Cache::remember('card-stats-' . auth()->id(), 10 * 1, fn () => $this->_getStats());
 
+        $notifications = User::where('active', '0')->get();
+
+        $count = $notifications->count();
+
         return view('dashboard.home', [
-            'stats' => $stats
+            'stats' => $stats,
+            'notifications' => $notifications,
+            'count' => $count
         ]);
     }
 
