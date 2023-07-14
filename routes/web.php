@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PengepulController;
 use App\Http\Controllers\Agensi\TrashInController;
 use App\Http\Controllers\Agensi\DashboardController;
+use App\Http\Controllers\Agensi\PlasticTypeController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
+use App\Http\Controllers\Agensi\PlasticTypePriceController;
 use App\Http\Controllers\Admin\PricesForTypesOfPlasticController;
 
 
@@ -105,6 +107,12 @@ Route::group(['middleware' => ['auth', 'OnlyAgent']], function () {
 
     //get price
     Route::get('/agent/getPrice', [TrashInController::class, 'getPrice'])->name('agent.getPrice');
+
+    //get Trash Type
+    Route::get('/agent/trash-type', [PlasticTypeController::class, 'index'])->name('agent.trash-type');
+
+    //get Trash Type Price
+    Route::get('/agent/trash-type-price', [PlasticTypePriceController::class, 'index'])->name('agent.trash-type-price');
 });
 
 

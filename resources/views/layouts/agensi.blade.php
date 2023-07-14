@@ -54,7 +54,7 @@
       <div class="main-header-right row m-0">
         <div class="main-header-left">
           <div class="logo-wrapper"><a href="/home"><img class="img-fluid"
-                src="{{ asset('assets/images/logo/logo.png') }}" alt=""></a></div>
+                src="{{ asset('assets/images/logo/mti.png') }}" alt=""></a></div>
           <div class="dark-logo-wrapper"><a href="/home"><img class="img-fluid"
                 src="{{ asset('assets/images/logo/dark-logo.png') }}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center"
@@ -97,49 +97,56 @@
                       class="pull-right"><i data-feather="star"> </i></span></li>
                 </ul>
               </div>
-            </li>
-            @if($count > 0)
-            <li class="onhover-dropdown">
-                <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
+                @php
+                use App\Models\User;
+                $notifications = User::where('active', '0')->get();
+
+                $count = $notifications->count();
+
+            @endphp
+
+                @if($count > 0)
+                <li class="onhover-dropdown">
+                    <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
+                    <ul class="notification-dropdown onhover-show-div">
+                    <li>
+                        <p class="f-w-700 mb-0">You have {{ $count }} Notifications<span
+                            class="pull-right badge badge-primary badge-pill">{{ $count }}</span></p>
+                    </li>
+                    @foreach ($notifications as $notification)
+                    <li class="noti-danger">
+                        <div class="media"><span class="notification-bg bg-light-danger"><i data-feather="user-check">
+                            </i></span>
+                            <div class="media-body">
+                            <p>Activation User {{ $notification->first_name }} {{ $notification->last_name }}</p><span>{{ $notification->created_at->format('H') }} hours ago</span>
+                            </div>
+                        </div>
+                        </li>
+                    @endforeach
+                    </ul>
+                </li>
+
+                @else
+                <li class="onhover-dropdown" style="margin-bottom: 1rem">
+                <div class="notification"><i data-feather="bell"></i><span class="dot-animated"></span></div>
                 <ul class="notification-dropdown onhover-show-div">
-                  <li>
+                <li>
                     <p class="f-w-700 mb-0">You have {{ $count }} Notifications<span
                         class="pull-right badge badge-primary badge-pill">{{ $count }}</span></p>
-                  </li>
-                  @foreach ($notifications as $notification)
-                  <li class="noti-danger">
-                      <div class="media"><span class="notification-bg bg-light-danger"><i data-feather="user-check">
-                          </i></span>
-                        <div class="media-body">
-                          <p>Activation User {{ $notification->first_name }} {{ $notification->last_name }}</p><span>{{ $notification->created_at->format('H') }} hours ago</span>
-                        </div>
-                      </div>
-                    </li>
-                  @endforeach
-                </ul>
-              </li>
-
-        @else
-        <li class="onhover-dropdown" style="margin-bottom: 1rem">
-            <div class="notification"><i data-feather="bell"></i><span class="dot-animated"></span></div>
-            <ul class="notification-dropdown onhover-show-div">
-              <li>
-                <p class="f-w-700 mb-0">You have {{ $count }} Notifications<span
-                    class="pull-right badge badge-primary badge-pill">{{ $count }}</span></p>
-              </li>
-              @foreach ($notifications as $notification)
-              <li class="noti-danger">
-                  <div class="media"><span class="notification-bg bg-light-danger"><i data-feather="user-check">
-                      </i></span>
-                    <div class="media-body">
-                      <p>Activation User {{ $notification->first_name }} {{ $notification->last_name }}</p><span>{{ $notification->created_at->format('H') }} hours ago</span>
-                    </div>
-                  </div>
                 </li>
-              @endforeach
-            </ul>
-          </li>
-        @endif
+                @foreach ($notifications as $notification)
+                <li class="noti-danger">
+                    <div class="media"><span class="notification-bg bg-light-danger"><i data-feather="user-check">
+                        </i></span>
+                        <div class="media-body">
+                        <p>Activation User {{ $notification->first_name }} {{ $notification->last_name }}</p><span>{{ $notification->created_at->format('H') }} hours ago</span>
+                        </div>
+                    </div>
+                    </li>
+                @endforeach
+                </ul>
+                </li>
+                @endif
             <li>
               <div class="mode"><i class="fa fa-moon-o"></i></div>
             </li>
@@ -253,9 +260,9 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="book"></i><span>Data Sampah</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Jenis Sampah</a></li>
-                    <li><a href="http://">Data Harga Jenis Sampah</a></li>
-                    <li><a href="{{ route('agent.trash-in') }}">Data Sampah Masuk</a></li>
+                    <li><a href="{{ route('agent.trash-type') }}">Plastic Type</a></li>
+                    <li><a href="{{ route('agent.trash-type-price') }}">Plastic Type Price</a></li>
+                    <li><a href="{{ route('agent.trash-in') }}">Trash In</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
