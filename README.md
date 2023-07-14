@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## SIAKAD - Lara
+## PRESBOOT - Lara
 
 Website SISTEM Informasi  berbasis **LARAVEL 9** sebelumnya saya sudah buat juga yang versi nodejs + react, cuma belum lengkap, silahkan kalian lihat juga jika ingin belajar, fitur sama saja nantinya yang hanya berbeda dalam penggunaan teknologi bahasa yang saya gunakan, yang dibuat sedemikian rupa, untuk saya belajar, dan ini semua open source, bisa kalian kembangkan kembali, fitur sementara yang sudah saya kerjakan, yaitu:
 
