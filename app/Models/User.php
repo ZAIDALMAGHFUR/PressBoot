@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\City;
 use App\Models\Role;
+use App\Models\Income;
 use App\Models\Location;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -56,6 +57,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function city()
     {
         return $this->belongsTo(City::class, 'citys_id');
+    }
+
+
+    public function transactions()
+    {
+        return $this->belongsToMany(Income::class,  'users_id');
     }
 
 

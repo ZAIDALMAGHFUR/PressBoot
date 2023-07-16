@@ -75,78 +75,6 @@
           <ul class="nav-menus">
             <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                   data-feather="maximize"></i></a></li>
-            <li class="onhover-dropdown">
-              <div class="bookmark-box"><i data-feather="star"></i></div>
-              <div class="bookmark-dropdown onhover-show-div">
-                <div class="form-group mb-0">
-                  <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i
-                          class="fa fa-search"></i></span>
-                    </div>
-                    <input class="form-control" type="text" placeholder="Search for bookmark...">
-                  </div>
-                </div>
-                <ul class="m-t-5">
-                  <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="inbox"></i>Email<span
-                      class="pull-right"><i data-feather="star"></i></span></li>
-                  <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="message-square"></i>Chat<span
-                      class="pull-right"><i data-feather="star"></i></span></li>
-                  <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="command"></i>Feather Icon<span
-                      class="pull-right"><i data-feather="star"></i></span></li>
-                  <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="airplay"></i>Widgets<span
-                      class="pull-right"><i data-feather="star"> </i></span></li>
-                </ul>
-              </div>
-                @php
-                use App\Models\User;
-                $notifications = User::where('active', '0')->get();
-
-                $count = $notifications->count();
-
-            @endphp
-
-                @if($count > 0)
-                <li class="onhover-dropdown">
-                    <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
-                    <ul class="notification-dropdown onhover-show-div">
-                    <li>
-                        <p class="f-w-700 mb-0">You have {{ $count }} Notifications<span
-                            class="pull-right badge badge-primary badge-pill">{{ $count }}</span></p>
-                    </li>
-                    @foreach ($notifications as $notification)
-                    <li class="noti-danger">
-                        <div class="media"><span class="notification-bg bg-light-danger"><i data-feather="user-check">
-                            </i></span>
-                            <div class="media-body">
-                            <p>Activation User {{ $notification->first_name }} {{ $notification->last_name }}</p><span>{{ $notification->created_at->format('H') }} hours ago</span>
-                            </div>
-                        </div>
-                        </li>
-                    @endforeach
-                    </ul>
-                </li>
-
-                @else
-                <li class="onhover-dropdown" style="margin-bottom: 1rem">
-                <div class="notification"><i data-feather="bell"></i><span class="dot-animated"></span></div>
-                <ul class="notification-dropdown onhover-show-div">
-                <li>
-                    <p class="f-w-700 mb-0">You have {{ $count }} Notifications<span
-                        class="pull-right badge badge-primary badge-pill">{{ $count }}</span></p>
-                </li>
-                @foreach ($notifications as $notification)
-                <li class="noti-danger">
-                    <div class="media"><span class="notification-bg bg-light-danger"><i data-feather="user-check">
-                        </i></span>
-                        <div class="media-body">
-                        <p>Activation User {{ $notification->first_name }} {{ $notification->last_name }}</p><span>{{ $notification->created_at->format('H') }} hours ago</span>
-                        </div>
-                    </div>
-                    </li>
-                @endforeach
-                </ul>
-                </li>
-                @endif
             <li>
               <div class="mode"><i class="fa fa-moon-o"></i></div>
             </li>
@@ -237,7 +165,7 @@
                     <h6>General </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('agent') }}"><i
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('pengepul') }}"><i
                       data-feather="home"></i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-main-title">
@@ -260,9 +188,9 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="book"></i><span>Data Sampah</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="{{ route('agent.trash-type') }}">Plastic Type</a></li>
-                    <li><a href="{{ route('agent.trash-type-price') }}">Plastic Type Price</a></li>
-                    <li><a href="{{ route('agent.trash-in') }}">Trash In</a></li>
+                    <li><a href="">Plastic Type</a></li>
+                    <li><a href="">Plastic Type Price</a></li>
+                    <li><a href="">Trash In</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

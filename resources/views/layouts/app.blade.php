@@ -315,7 +315,7 @@
               <p class="mb-0">PRESSBOOT - Media Informatika.</p>
             </div>
             <div class="col-md-6">
-              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> Zaid
+              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> Mec Tech Inv
               </p>
             </div>
           </div>
