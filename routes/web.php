@@ -12,11 +12,14 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PengepulController;
 use App\Http\Controllers\Agensi\TrashInController;
 use App\Http\Controllers\Agensi\DashboardController;
-use App\Http\Controllers\Pengepul\DashboardPController;
 use App\Http\Controllers\Agensi\PlasticTypeController;
+use App\Http\Controllers\Pengepul\DashboardPController;
 use App\Http\Controllers\Admin\TypesOfPlasticController;
 use App\Http\Controllers\Agensi\PlasticTypePriceController;
+use App\Http\Controllers\Pengepul\PengepulTrashInController;
+use App\Http\Controllers\Pengepul\PengepulPlasticTypeController;
 use App\Http\Controllers\Admin\PricesForTypesOfPlasticController;
+use App\Http\Controllers\Pengepul\PengepulPlasticTypePriceController;
 
 
 /*
@@ -120,6 +123,23 @@ Route::group(['middleware' => ['auth', 'OnlyAgent']], function () {
 
 Route::group(['middleware' => ['auth', 'OnlyPengepul']], function () {
     Route::get('/pengepul', [DashboardPController::class, 'index'])->name('pengepul');
+
+    //get plastic type
+    Route::get('/pengepul/trash-type', [PengepulPlasticTypeController::class, 'index'])->name('pengepul.trash-type');
+
+    //get plastic type price
+    Route::get('/pengepul/trash-type-price', [PengepulPlasticTypePriceController::class, 'index'])->name('pengepul.trash-type-price');
+
+    //get trash in
+    Route::get('/pengepul/trash-in', [PengepulTrashInController::class, 'index'])->name('pengepul.trash-in');
+    Route::get('/pengepul/trash-in/create', [PengepulTrashInController::class, 'create'])->name('pengepul.trash-in.create');
+    Route::post('/pengepul/trash-in/store', [PengepulTrashInController::class, 'store'])->name('pengepul.trash-in.store');
+    Route::get('/pengepul/trash-in/edit/{id}', [PengepulTrashInController::class, 'edit'])->name('pengepul.trash-in.edit');
+    Route::post('/pengepul/trash-in/update/{id}', [PengepulTrashInController::class, 'update'])->name('pengepul.trash-in.update');
+    Route::delete('/pengepul/trash-in/delete/{id}', [PengepulTrashInController::class, 'destroy'])->name('pengepul.trash-in.delete');
+
+    //get price
+    Route::get('/pengepul/getPrice', [PengepulTrashInController::class, 'getPrice'])->name('pengepul.getPrice');
 });
 
 

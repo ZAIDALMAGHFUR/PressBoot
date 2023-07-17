@@ -174,53 +174,18 @@
                   </div>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="grid"></i><span>Data Master</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Data Wilayah</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="users"></i><span>Data Pengepul saya</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Pengepul</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="book"></i><span>Data Sampah</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="">Plastic Type</a></li>
-                    <li><a href="">Plastic Type Price</a></li>
-                    <li><a href="">Trash In</a></li>
+                    <li><a href="{{ route('pengepul.trash-type') }}">Plastic Type</a></li>
+                    <li><a href="{{ route('pengepul.trash-type-price') }}">Plastic Type Price</a></li>
+                    <li><a href="{{ route('pengepul.trash-in') }}">Trash In</a></li>
                   </ul>
                 </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="calendar"></i><span>Data Pengepul</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Data Pemasukan Pengepul</a></li>
-                  </ul>
-                </li>
-                {{-- <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="file-text"></i><span> Harga Pabrik</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Harga Jenis Sampah</a></li>
-                    <li><a href="http://">Data Penjualan Pabrik</a></li>
-                  </ul> --}}
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
                       data-feather="book-open"></i><span>Rekap Pemasukan</span></a>
                 </li>
-                <li class="sidebar-main-title">
-                  <div>
-                    <h6>Miscellaneous </h6>
-                  </div>
-                </li>
-                <li class="dropdown"><a class="nav-link menu" href="http://"><i
-                      data-feather="video"></i><span>Zoom
-                      Meeting</span></a>
-                </li>
-                <li class="dropdown"><a class="nav-link menu" href="href="http://"><i
-                      data-feather="pocket"></i><span>Job Search</span></a>
-                </li>
+
               </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
@@ -234,7 +199,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 footer-copyright">
-              <p class="mb-0">SIAKAD - Media Informatika.</p>
+              <p class="mb-0">PRESSBBOT - Media Informatika.</p>
             </div>
             <div class="col-md-6">
               <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> Mec Tech Inv
